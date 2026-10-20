@@ -1,4 +1,8 @@
+@login
 Feature: User Login Functionality
+  As a registered customer of TutorialsNinja
+  I want to log in with my credentials
+  So that I can manage my account and orders
 
   Background:
     Given the user navigates to the TutorialsNinja application
@@ -13,16 +17,20 @@ Feature: User Login Functionality
     Examples:
       | email                        | password  |
       | maheshpatil234@gmail.com     |     12345 |
+      | maheshpatil34@gmail.com      |     12345 |
+      | sangramnarale@gmail.com      |     12345 |
       | mahesh.jadhav@aressindia.net | 123456789 |
+      | mahesh.holkar@gmail.com      |     12345 |
+      | shriram@gmail.com            |     12345 |
 
   @regression
   Scenario Outline: Failed login with invalid credentials
     When the user enters email "<email>" and password "<password>"
     And clicks the Login button
-    Then a warning message should appear stating "<expectedError>"
+    Then a warning message should appear stating "<errorMessage>"
 
     Examples:
-      | email                    | password         | expectedError                                         |
+      | email                    | password         | errorMessage                                          |
       | invalid_user999@test.com | wrongpassword123 | Warning: No match for E-Mail Address and/or Password. |
 
   @regression

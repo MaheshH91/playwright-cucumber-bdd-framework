@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     tools {
-        // Ensure this exact name matches Manage Jenkins > Tools > NodeJS Installations
+        // Must match your tool name in: Manage Jenkins > Tools > NodeJS Installations
         nodejs 'NodeJS 24.21.0'
     }
 
     parameters {
         choice(
             name: 'TAG',
-            choices: ['all', '@smoke', '@regression'],
+            choices: ['all', '@smoke', '@regression', '@login'],
             description: 'Select Cucumber tag to execute'
         )
         booleanParam(
@@ -117,7 +117,7 @@ pipeline {
         }
 
         unstable {
-            echo 'Test failures detected. Check the Cucumber BDD Test Report.'
+            echo 'Test failures detected. Review the Cucumber BDD Test Report.'
         }
 
         failure {

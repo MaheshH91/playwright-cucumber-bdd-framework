@@ -1,18 +1,18 @@
 [
   {
-    "description": "",
+    "description": "  As a registered customer of TutorialsNinja\n  I want to log in with my credentials\n  So that I can manage my account and orders",
     "elements": [
       {
         "description": "",
         "id": "user-login-functionality;successful-login-with-valid-credentials",
         "keyword": "Scenario Outline",
-        "line": 15,
+        "line": 19,
         "name": "Successful login with valid credentials",
         "steps": [
           {
             "result": {
               "status": "passed",
-              "duration": 986582699
+              "duration": 357391999
             },
             "keyword": "Before",
             "hidden": true
@@ -20,11 +20,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 3885448800
+              "duration": 667680099
             },
             "arguments": [],
             "keyword": "Given ",
-            "line": 4,
+            "line": 8,
             "name": "the user navigates to the TutorialsNinja application",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:7"
@@ -33,11 +33,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 226724799
+              "duration": 239103499
             },
             "arguments": [],
             "keyword": "And ",
-            "line": 5,
+            "line": 9,
             "name": "navigates to the Login page",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:11"
@@ -46,11 +46,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 66814600
+              "duration": 44848299
             },
             "arguments": [],
             "keyword": "When ",
-            "line": 9,
+            "line": 13,
             "name": "the user enters email \"maheshpatil234@gmail.com\" and password \"12345\"",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:15"
@@ -59,11 +59,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 1574350899
+              "duration": 1244289300
             },
             "arguments": [],
             "keyword": "And ",
-            "line": 10,
+            "line": 14,
             "name": "clicks the Login button",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:22"
@@ -72,11 +72,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 32658999
+              "duration": 24296599
             },
             "arguments": [],
             "keyword": "Then ",
-            "line": 11,
+            "line": 15,
             "name": "the user should see the My Account section",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:27"
@@ -85,7 +85,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 81636399
+              "duration": 206957400
             },
             "keyword": "After",
             "hidden": true
@@ -93,12 +93,16 @@
         ],
         "tags": [
           {
+            "name": "@login",
+            "line": 1
+          },
+          {
             "name": "@smoke",
-            "line": 7
+            "line": 11
           },
           {
             "name": "@regression",
-            "line": 7
+            "line": 11
           }
         ],
         "type": "scenario"
@@ -107,13 +111,13 @@
         "description": "",
         "id": "user-login-functionality;successful-login-with-valid-credentials",
         "keyword": "Scenario Outline",
-        "line": 16,
+        "line": 20,
         "name": "Successful login with valid credentials",
         "steps": [
           {
             "result": {
               "status": "passed",
-              "duration": 137098000
+              "duration": 161347999
             },
             "keyword": "Before",
             "hidden": true
@@ -121,11 +125,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 763334700
+              "duration": 602374800
             },
             "arguments": [],
             "keyword": "Given ",
-            "line": 4,
+            "line": 8,
             "name": "the user navigates to the TutorialsNinja application",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:7"
@@ -134,11 +138,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 296343399
+              "duration": 204122999
             },
             "arguments": [],
             "keyword": "And ",
-            "line": 5,
+            "line": 9,
             "name": "navigates to the Login page",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:11"
@@ -147,12 +151,12 @@
           {
             "result": {
               "status": "passed",
-              "duration": 24676999
+              "duration": 31967800
             },
             "arguments": [],
             "keyword": "When ",
-            "line": 9,
-            "name": "the user enters email \"mahesh.jadhav@aressindia.net\" and password \"123456789\"",
+            "line": 13,
+            "name": "the user enters email \"maheshpatil34@gmail.com\" and password \"12345\"",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:15"
             }
@@ -160,11 +164,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 1018851700
+              "duration": 921131600
             },
             "arguments": [],
             "keyword": "And ",
-            "line": 10,
+            "line": 14,
             "name": "clicks the Login button",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:22"
@@ -173,11 +177,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 26376800
+              "duration": 45954599
             },
             "arguments": [],
             "keyword": "Then ",
-            "line": 11,
+            "line": 15,
             "name": "the user should see the My Account section",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:27"
@@ -186,7 +190,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 138119699
+              "duration": 223111499
             },
             "keyword": "After",
             "hidden": true
@@ -194,12 +198,436 @@
         ],
         "tags": [
           {
+            "name": "@login",
+            "line": 1
+          },
+          {
             "name": "@smoke",
-            "line": 7
+            "line": 11
           },
           {
             "name": "@regression",
-            "line": 7
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "user-login-functionality;successful-login-with-valid-credentials",
+        "keyword": "Scenario Outline",
+        "line": 21,
+        "name": "Successful login with valid credentials",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 180570100
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 732818199
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the user navigates to the TutorialsNinja application",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 243971599
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "navigates to the Login page",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:11"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 40712500
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "the user enters email \"sangramnarale@gmail.com\" and password \"12345\"",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:15"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 1214462500
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "clicks the Login button",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:22"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 28307499
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the user should see the My Account section",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:27"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 220938900
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@smoke",
+            "line": 11
+          },
+          {
+            "name": "@regression",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "user-login-functionality;successful-login-with-valid-credentials",
+        "keyword": "Scenario Outline",
+        "line": 22,
+        "name": "Successful login with valid credentials",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 178594499
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 806212199
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the user navigates to the TutorialsNinja application",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 211354100
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "navigates to the Login page",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:11"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 31020700
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "the user enters email \"mahesh.jadhav@aressindia.net\" and password \"123456789\"",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:15"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 922385099
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "clicks the Login button",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:22"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 35284100
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the user should see the My Account section",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:27"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 178951799
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@smoke",
+            "line": 11
+          },
+          {
+            "name": "@regression",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "user-login-functionality;successful-login-with-valid-credentials",
+        "keyword": "Scenario Outline",
+        "line": 23,
+        "name": "Successful login with valid credentials",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 191667500
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 715410799
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the user navigates to the TutorialsNinja application",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 206042099
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "navigates to the Login page",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:11"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 30373700
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "the user enters email \"mahesh.holkar@gmail.com\" and password \"12345\"",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:15"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 903468300
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "clicks the Login button",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:22"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 28739199
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the user should see the My Account section",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:27"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 223156599
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@smoke",
+            "line": 11
+          },
+          {
+            "name": "@regression",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "user-login-functionality;successful-login-with-valid-credentials",
+        "keyword": "Scenario Outline",
+        "line": 24,
+        "name": "Successful login with valid credentials",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 142638500
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 656435499
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the user navigates to the TutorialsNinja application",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 208307600
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "navigates to the Login page",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:11"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 27935300
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "the user enters email \"shriram@gmail.com\" and password \"12345\"",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:15"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 889845900
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "clicks the Login button",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:22"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 24340400
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the user should see the My Account section",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:27"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 217781800
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@smoke",
+            "line": 11
+          },
+          {
+            "name": "@regression",
+            "line": 11
           }
         ],
         "type": "scenario"
@@ -208,13 +636,13 @@
         "description": "",
         "id": "user-login-functionality;failed-login-with-invalid-credentials",
         "keyword": "Scenario Outline",
-        "line": 26,
+        "line": 34,
         "name": "Failed login with invalid credentials",
         "steps": [
           {
             "result": {
               "status": "passed",
-              "duration": 134264200
+              "duration": 156028600
             },
             "keyword": "Before",
             "hidden": true
@@ -222,11 +650,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 616913599
+              "duration": 627292800
             },
             "arguments": [],
             "keyword": "Given ",
-            "line": 4,
+            "line": 8,
             "name": "the user navigates to the TutorialsNinja application",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:7"
@@ -235,11 +663,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 230796300
+              "duration": 198854500
             },
             "arguments": [],
             "keyword": "And ",
-            "line": 5,
+            "line": 9,
             "name": "navigates to the Login page",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:11"
@@ -248,11 +676,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 22832699
+              "duration": 27188299
             },
             "arguments": [],
             "keyword": "When ",
-            "line": 20,
+            "line": 28,
             "name": "the user enters email \"invalid_user999@test.com\" and password \"wrongpassword123\"",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:15"
@@ -261,11 +689,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 846216199
+              "duration": 791488200
             },
             "arguments": [],
             "keyword": "And ",
-            "line": 21,
+            "line": 29,
             "name": "clicks the Login button",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:22"
@@ -274,11 +702,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 31857500
+              "duration": 30020599
             },
             "arguments": [],
             "keyword": "Then ",
-            "line": 22,
+            "line": 30,
             "name": "a warning message should appear stating \"Warning: No match for E-Mail Address and/or Password.\"",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:31"
@@ -287,7 +715,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 48255699
+              "duration": 49160799
             },
             "keyword": "After",
             "hidden": true
@@ -295,8 +723,12 @@
         ],
         "tags": [
           {
+            "name": "@login",
+            "line": 1
+          },
+          {
             "name": "@regression",
-            "line": 18
+            "line": 26
           }
         ],
         "type": "scenario"
@@ -305,13 +737,13 @@
         "description": "",
         "id": "user-login-functionality;failed-login-without-entering-credentials",
         "keyword": "Scenario",
-        "line": 29,
+        "line": 37,
         "name": "Failed login without entering credentials",
         "steps": [
           {
             "result": {
               "status": "passed",
-              "duration": 157810700
+              "duration": 163786599
             },
             "keyword": "Before",
             "hidden": true
@@ -319,11 +751,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 717013900
+              "duration": 635875199
             },
             "arguments": [],
             "keyword": "Given ",
-            "line": 4,
+            "line": 8,
             "name": "the user navigates to the TutorialsNinja application",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:7"
@@ -332,11 +764,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 238258100
+              "duration": 201355599
             },
             "arguments": [],
             "keyword": "And ",
-            "line": 5,
+            "line": 9,
             "name": "navigates to the Login page",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:11"
@@ -345,11 +777,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 1059252000
+              "duration": 1013619599
             },
             "arguments": [],
             "keyword": "When ",
-            "line": 30,
+            "line": 38,
             "name": "clicks the Login button",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:22"
@@ -358,11 +790,11 @@
           {
             "result": {
               "status": "passed",
-              "duration": 44749899
+              "duration": 26793499
             },
             "arguments": [],
             "keyword": "Then ",
-            "line": 31,
+            "line": 39,
             "name": "a warning message should appear stating \"Warning: No match for E-Mail Address and/or Password.\"",
             "match": {
               "location": "src\\step-definitions\\login.steps.ts:31"
@@ -371,7 +803,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 259494700
+              "duration": 233486399
             },
             "keyword": "After",
             "hidden": true
@@ -379,18 +811,27 @@
         ],
         "tags": [
           {
+            "name": "@login",
+            "line": 1
+          },
+          {
             "name": "@regression",
-            "line": 28
+            "line": 36
           }
         ],
         "type": "scenario"
       }
     ],
     "id": "user-login-functionality",
-    "line": 1,
+    "line": 2,
     "keyword": "Feature",
     "name": "User Login Functionality",
-    "tags": [],
+    "tags": [
+      {
+        "name": "@login",
+        "line": 1
+      }
+    ],
     "uri": "features\\login.feature"
   },
   {
@@ -406,7 +847,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 254488400
+              "duration": 137631199
             },
             "keyword": "Before",
             "hidden": true
@@ -414,7 +855,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 726005699
+              "duration": 626852100
             },
             "arguments": [],
             "keyword": "Given ",
@@ -427,7 +868,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 381017599
+              "duration": 284070199
             },
             "arguments": [],
             "keyword": "And ",
@@ -440,7 +881,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 1502270000
+              "duration": 1007398399
             },
             "arguments": [],
             "keyword": "When ",
@@ -453,7 +894,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 2675600
+              "duration": 1161200
             },
             "arguments": [],
             "keyword": "And ",
@@ -466,7 +907,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 41396700
+              "duration": 26020700
             },
             "arguments": [],
             "keyword": "Then ",
@@ -479,7 +920,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 60784600
+              "duration": 84184600
             },
             "keyword": "After",
             "hidden": true
@@ -507,7 +948,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 216393400
+              "duration": 167403700
             },
             "keyword": "Before",
             "hidden": true
@@ -515,7 +956,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 1049514900
+              "duration": 734593699
             },
             "arguments": [],
             "keyword": "Given ",
@@ -528,7 +969,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 557892199
+              "duration": 295517300
             },
             "arguments": [],
             "keyword": "And ",
@@ -541,7 +982,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 869041100
+              "duration": 623660599
             },
             "arguments": [],
             "keyword": "When ",
@@ -554,7 +995,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 210981700
+              "duration": 53611799
             },
             "arguments": [],
             "keyword": "Then ",
@@ -567,7 +1008,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 61387800
+              "duration": 76113199
             },
             "keyword": "After",
             "hidden": true
@@ -591,7 +1032,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 196979400
+              "duration": 246889500
             },
             "keyword": "Before",
             "hidden": true
@@ -599,7 +1040,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 696688099
+              "duration": 701771699
             },
             "arguments": [],
             "keyword": "Given ",
@@ -612,7 +1053,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 346454699
+              "duration": 298601799
             },
             "arguments": [],
             "keyword": "And ",
@@ -625,7 +1066,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 661530399
+              "duration": 468036899
             },
             "arguments": [],
             "keyword": "When ",
@@ -638,7 +1079,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 51514900
+              "duration": 53081700
             },
             "arguments": [],
             "keyword": "Then ",
@@ -651,7 +1092,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 241915199
+              "duration": 65260500
             },
             "keyword": "After",
             "hidden": true
@@ -686,7 +1127,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 198749400
+              "duration": 210898199
             },
             "keyword": "Before",
             "hidden": true
@@ -694,7 +1135,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 681010000
+              "duration": 661873500
             },
             "arguments": [],
             "keyword": "Given ",
@@ -707,7 +1148,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 429175800
+              "duration": 333409599
             },
             "arguments": [],
             "keyword": "When ",
@@ -720,7 +1161,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 48156799
+              "duration": 41454699
             },
             "arguments": [],
             "keyword": "Then ",
@@ -733,7 +1174,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 68646499
+              "duration": 62844799
             },
             "keyword": "After",
             "hidden": true
@@ -761,7 +1202,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 215935399
+              "duration": 216193099
             },
             "keyword": "Before",
             "hidden": true
@@ -769,7 +1210,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 864751799
+              "duration": 654559800
             },
             "arguments": [],
             "keyword": "Given ",
@@ -782,7 +1223,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 307518199
+              "duration": 277277900
             },
             "arguments": [],
             "keyword": "When ",
@@ -795,7 +1236,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 65084700
+              "duration": 41791799
             },
             "arguments": [],
             "keyword": "Then ",
@@ -808,7 +1249,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 93134200
+              "duration": 130249499
             },
             "keyword": "After",
             "hidden": true
@@ -832,7 +1273,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 329813000
+              "duration": 182916100
             },
             "keyword": "Before",
             "hidden": true
@@ -840,7 +1281,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 875718899
+              "duration": 774799600
             },
             "arguments": [],
             "keyword": "Given ",
@@ -853,7 +1294,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 509016700
+              "duration": 284440200
             },
             "arguments": [],
             "keyword": "When ",
@@ -866,7 +1307,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 100450700
+              "duration": 39414100
             },
             "arguments": [],
             "keyword": "Then ",
@@ -879,7 +1320,7 @@
           {
             "result": {
               "status": "passed",
-              "duration": 171962499
+              "duration": 252307699
             },
             "keyword": "After",
             "hidden": true
