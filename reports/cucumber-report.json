@@ -1,0 +1,904 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "user-login-functionality;successful-login-with-valid-credentials",
+        "keyword": "Scenario Outline",
+        "line": 15,
+        "name": "Successful login with valid credentials",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 986582699
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 3885448800
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user navigates to the TutorialsNinja application",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 226724799
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "navigates to the Login page",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:11"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 66814600
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "the user enters email \"maheshpatil234@gmail.com\" and password \"12345\"",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:15"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 1574350899
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "clicks the Login button",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:22"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 32658999
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "the user should see the My Account section",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:27"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 81636399
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 7
+          },
+          {
+            "name": "@regression",
+            "line": 7
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "user-login-functionality;successful-login-with-valid-credentials",
+        "keyword": "Scenario Outline",
+        "line": 16,
+        "name": "Successful login with valid credentials",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 137098000
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 763334700
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user navigates to the TutorialsNinja application",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 296343399
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "navigates to the Login page",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:11"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 24676999
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "the user enters email \"mahesh.jadhav@aressindia.net\" and password \"123456789\"",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:15"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 1018851700
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "clicks the Login button",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:22"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 26376800
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "the user should see the My Account section",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:27"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 138119699
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 7
+          },
+          {
+            "name": "@regression",
+            "line": 7
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "user-login-functionality;failed-login-with-invalid-credentials",
+        "keyword": "Scenario Outline",
+        "line": 26,
+        "name": "Failed login with invalid credentials",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 134264200
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 616913599
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user navigates to the TutorialsNinja application",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 230796300
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "navigates to the Login page",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:11"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 22832699
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "the user enters email \"invalid_user999@test.com\" and password \"wrongpassword123\"",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:15"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 846216199
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "clicks the Login button",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:22"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 31857500
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 22,
+            "name": "a warning message should appear stating \"Warning: No match for E-Mail Address and/or Password.\"",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:31"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 48255699
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@regression",
+            "line": 18
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "user-login-functionality;failed-login-without-entering-credentials",
+        "keyword": "Scenario",
+        "line": 29,
+        "name": "Failed login without entering credentials",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 157810700
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 717013900
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user navigates to the TutorialsNinja application",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 238258100
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "navigates to the Login page",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:11"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 1059252000
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 30,
+            "name": "clicks the Login button",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:22"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 44749899
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 31,
+            "name": "a warning message should appear stating \"Warning: No match for E-Mail Address and/or Password.\"",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:31"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 259494700
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@regression",
+            "line": 28
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "user-login-functionality",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "User Login Functionality",
+    "tags": [],
+    "uri": "features\\login.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "user-registration-functionality;register-an-account-with-mandatory-fields",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "Register an account with mandatory fields",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 254488400
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 726005699
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user navigates to the TutorialsNinja application",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 381017599
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "navigates to the Register page",
+            "match": {
+              "location": "src\\step-definitions\\register.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 1502270000
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "the user fills in valid mandatory details",
+            "match": {
+              "location": "src\\step-definitions\\register.steps.ts:11"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 2675600
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "agrees to the Privacy Policy and clicks Continue",
+            "match": {
+              "location": "src\\step-definitions\\register.steps.ts:21"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 41396700
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "the account should be created successfully with \"Your Account Has Been Created!\"",
+            "match": {
+              "location": "src\\step-definitions\\register.steps.ts:25"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 60784600
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 7
+          },
+          {
+            "name": "@regression",
+            "line": 7
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "user-registration-functionality;register-with-an-already-existing-email",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "Register with an already existing email",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 216393400
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 1049514900
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user navigates to the TutorialsNinja application",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 557892199
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "navigates to the Register page",
+            "match": {
+              "location": "src\\step-definitions\\register.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 869041100
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "the user registers using existing email \"mahesh.jadhav@aressindia.net\"",
+            "match": {
+              "location": "src\\step-definitions\\register.steps.ts:30"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 210981700
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "an alert should display \"Warning: E-Mail Address is already registered!\"",
+            "match": {
+              "location": "src\\step-definitions\\register.steps.ts:41"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 61387800
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@regression",
+            "line": 13
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "user-registration-functionality;verify-validation-warnings-when-submitting-blank-form",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "Verify validation warnings when submitting blank form",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 196979400
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 696688099
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user navigates to the TutorialsNinja application",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 346454699
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "navigates to the Register page",
+            "match": {
+              "location": "src\\step-definitions\\register.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 661530399
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "the user clicks the continue button without filling form",
+            "match": {
+              "location": "src\\step-definitions\\register.steps.ts:46"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 51514900
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "mandatory field error warnings should be visible",
+            "match": {
+              "location": "src\\step-definitions\\register.steps.ts:50"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 241915199
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@regression",
+            "line": 18
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "user-registration-functionality",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "User Registration Functionality",
+    "tags": [],
+    "uri": "features\\register.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "product-search-functionality;search-for-an-existing-product",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "Search for an existing product",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 198749400
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 681010000
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user navigates to the TutorialsNinja application",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 429175800
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "the user searches for product \"HP\"",
+            "match": {
+              "location": "src\\step-definitions\\search.steps.ts:5"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 48156799
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "the product \"HP LP3065\" should appear in search results",
+            "match": {
+              "location": "src\\step-definitions\\search.steps.ts:9"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 68646499
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 6
+          },
+          {
+            "name": "@regression",
+            "line": 6
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "product-search-functionality;search-for-a-non-existing-product",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Search for a non-existing product",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 215935399
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 864751799
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user navigates to the TutorialsNinja application",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 307518199
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "the user searches for product \"Honda\"",
+            "match": {
+              "location": "src\\step-definitions\\search.steps.ts:5"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 65084700
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "the no product search result message should be displayed",
+            "match": {
+              "location": "src\\step-definitions\\search.steps.ts:18"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 93134200
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@regression",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "product-search-functionality;search-without-entering-product-name",
+        "keyword": "Scenario",
+        "line": 17,
+        "name": "Search without entering product name",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 329813000
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 875718899
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user navigates to the TutorialsNinja application",
+            "match": {
+              "location": "src\\step-definitions\\login.steps.ts:7"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 509016700
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "the user clicks on the search button directly",
+            "match": {
+              "location": "src\\step-definitions\\search.steps.ts:14"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 100450700
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "the no product search result message should be displayed",
+            "match": {
+              "location": "src\\step-definitions\\search.steps.ts:18"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 171962499
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@regression",
+            "line": 16
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "product-search-functionality",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Product Search Functionality",
+    "tags": [],
+    "uri": "features\\search.feature"
+  }
+]
