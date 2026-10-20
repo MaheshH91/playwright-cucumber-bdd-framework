@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     tools {
-        // Ensure this NodeJS tool matches the name configured under:
-        // Manage Jenkins > Tools > NodeJS Installations
+        // Ensure this exact name matches Manage Jenkins > Tools > NodeJS Installations
         nodejs 'NodeJS 24.21.0'
     }
 
@@ -34,7 +33,7 @@ pipeline {
 
     environment {
         CI = 'true'
-        URL = "${params.APP_URL}"
+        TARGET_URL = "${params.APP_URL}"
         HEADLESS = "${params.HEADLESS}"
     }
 
@@ -48,7 +47,6 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // Uses Windows batch command 'bat'. Replace with 'sh' if running on a Linux/Docker agent.
                 bat '''
                     @echo off
                     echo ========================================
@@ -83,8 +81,10 @@ pipeline {
                     echo "URL      : ${params.APP_URL}"
                     echo "========================================"
 
-                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
-                        bat "call npx cucumber-js ${tagArg}"
+                    withEnv(["URL=${params.APP_URL}", "HEADLESS=${params.HEADLESS}"]) {
+                        catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                            bat "call npx cucumber-js ${tagArg}"
+                        }
                     }
                 }
             }
@@ -97,7 +97,6 @@ pipeline {
             echo "Publishing Cucumber HTML Report"
             echo "========================================"
 
-            // Publish Cucumber HTML Report using HTML Publisher Plugin
             publishHTML(target: [
                 allowMissing: true,
                 alwaysLinkToLastBuild: true,
@@ -107,7 +106,6 @@ pipeline {
                 reportName: 'Cucumber BDD Test Report'
             ])
 
-            // Archive artifacts (JSON report, failure screenshots)
             archiveArtifacts(
                 artifacts: 'reports/**',
                 allowEmptyArchive: true
@@ -119,11 +117,11 @@ pipeline {
         }
 
         unstable {
-            echo 'Test failures detected. Review the Cucumber BDD Test Report for failing steps.'
+            echo 'Test failures detected. Check the Cucumber BDD Test Report.'
         }
 
         failure {
-            echo 'Pipeline execution failed during environment setup or dependency installation.'
+            echo 'Pipeline execution failed.'
         }
     }
 }
