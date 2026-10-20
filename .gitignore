@@ -1,13 +1,39 @@
-
-# Playwright
+# Dependencies
 node_modules/
+
+# Playwright test results and reports
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Cucumber reports
+/reports/cucumber-report.html
+/reports/cucumber-report.json
+/reports/screenshots/
+
+# Environment variables and secrets
 .env
+.env.*
+!.env.example
 .auth/
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
+
+# TypeScript build output
+/dist/
+/build/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.iml
