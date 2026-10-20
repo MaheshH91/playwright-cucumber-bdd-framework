@@ -301,3 +301,8 @@ System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 3.  **Relative URL Routing**: `HomePage` navigation utilizes clean
     relative routing resolved against the Playwright `baseURL`
     configured in `hooks.ts`.
+## Author & Connect
+
+- **Author**: Mahesh Holkar
+- **LinkedIn**: [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/maheshholkarqaengineer/)
+- **GitHub**: [![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=flat&logo=github)](https://github.com/MaheshH91)
