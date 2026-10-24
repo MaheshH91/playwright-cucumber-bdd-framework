@@ -13,9 +13,7 @@ Given('navigates to the Login page', async function (this: CustomWorld) {
 });
 
 When('the user enters email {string} and password {string}', async function (this: CustomWorld, email: string, pass: string) {
-  await this.loginPage!.emailField.waitFor({ state: 'visible', timeout: 10000 });
   await this.loginPage!.emailField.fill(email);
-  await this.loginPage!.passwordField.waitFor({ state: 'visible', timeout: 10000 });
   await this.loginPage!.passwordField.fill(pass);
 });
 
@@ -25,7 +23,7 @@ When('clicks the Login button', async function (this: CustomWorld) {
 });
 
 Then('the user should see the My Account section', async function (this: CustomWorld) {
-  await expect(this.accountPage!.myAccountHeading).toBeVisible({ timeout: 10000 });
+  await expect(this.accountPage!.myAccountHeading).toBeVisible();
 });
 
 Then('a warning message should appear stating {string}', async function (this: CustomWorld, expectedError: string) {

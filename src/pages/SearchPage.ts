@@ -12,13 +12,12 @@ export class SearchPage extends BasePage {
         this.noProductMessage = page.locator('#content p:has-text("There is no product that matches the search criteria.")');
     }
 
-    async displayStatusOfHPValidProduct(): Promise<boolean> {
-        await this.validHPProduct.waitFor({ state: 'visible', timeout: 10000 });
-        return this.isElementVisible(this.validHPProduct);
+    async isHPProductDisplayed(): Promise<boolean> {
+        // isVisible() does not throw a TimeoutError when the element is missing; it returns false immediately
+        return await this.validHPProduct.isVisible();
     }
 
-    async retrieveNoProductMessageText(): Promise<string> {
-        await this.noProductMessage.waitFor({ state: 'visible', timeout: 10000 });
-        return this.getText(this.noProductMessage);
+    async getNoProductMessage(): Promise<string> {
+        return (await this.noProductMessage.innerText()).trim();
     }
 }

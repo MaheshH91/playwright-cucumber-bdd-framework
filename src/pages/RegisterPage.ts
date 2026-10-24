@@ -1,3 +1,4 @@
+// src/pages/RegisterPage.ts
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from './BasePage';
 import { AccountSuccessPage } from './AccountSuccessPage';
@@ -48,33 +49,33 @@ export class RegisterPage extends BasePage {
     }
 
     private async fillMandatory(details: RegistrationFields): Promise<void> {
-        await this.type(this.firstNameField, details.firstName);
-        await this.type(this.lastNameField, details.lastName);
-        await this.type(this.emailField, details.email);
-        await this.type(this.telephoneField, details.phone);
-        await this.type(this.passwordField, details.password);
-        await this.type(this.confirmPasswordField, details.password);
-        await this.click(this.privacyPolicyCheckbox);
+        await this.firstNameField.fill(details.firstName);
+        await this.lastNameField.fill(details.lastName);
+        await this.emailField.fill(details.email);
+        await this.telephoneField.fill(details.phone);
+        await this.passwordField.fill(details.password);
+        await this.confirmPasswordField.fill(details.password);
+        await this.privacyPolicyCheckbox.check();
     }
 
     async registerMandatory(details: RegistrationFields): Promise<AccountSuccessPage> {
         await this.fillMandatory(details);
-        await this.click(this.continueButton);
+        await this.continueButton.click();
         return new AccountSuccessPage(this.page);
     }
 
     async registerFull(details: RegistrationFields): Promise<AccountSuccessPage> {
         await this.fillMandatory(details);
-        await this.click(this.newsletterRadio);
-        await this.click(this.continueButton);
+        await this.newsletterRadio.check();
+        await this.continueButton.click();
         return new AccountSuccessPage(this.page);
     }
 
     async clickContinue(): Promise<void> {
-        await this.click(this.continueButton);
+        await this.continueButton.click();
     }
 
     async getAlertWarningText(): Promise<string> {
-        return this.getText(this.alertWarning);
+        return (await this.alertWarning.innerText()).trim();
     }
 }

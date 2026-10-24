@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    timeout-minutes: 45
+    timeout-minutes: 30
     runs-on: ubuntu-latest
 
     steps:
@@ -25,9 +25,10 @@ jobs:
         run: npm ci
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install chromium --with-deps
 
       - name: Run Cucumber BDD Tests
+        id: run_tests
         run: npm run test
         env:
           HEADLESS: 'true'
@@ -37,8 +38,25 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-reports
-          path: |
-            reports/
-            allure-results/
-          retention-days: 30
+          name: cucumber-report
+          path: reports/cucumber-report.html
+          retention-days: 14
+
+      - name: Send Email Report
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "Test Execution Status: ${{ job.status }} - Build #${{ github.run_number }}"
+          to: ${{ secrets.REPORT_RECIPIENTS }}
+          from: "Automation QA <${{ secrets.SMTP_USERNAME }}>"
+          html_body: |
+            <h3>Cucumber BDD Test Run Results</h3>
+            <p><strong>Status:</strong> ${{ job.status }}</p>
+            <p><strong>Branch:</strong> ${{ github.ref_name }}</p>
+            <p><strong>Commit:</strong> ${{ github.sha }}</p>
+            <p>The Cucumber HTML report is attached to this email.</p>
+          attachments: reports/cucumber-report.html

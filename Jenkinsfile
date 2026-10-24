@@ -110,6 +110,24 @@ pipeline {
                 artifacts: 'reports/**',
                 allowEmptyArchive: true
             )
+
+            emailext (
+                to: 'holkarmahesh@outlook.com',
+                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME} [Build #${env.BUILD_NUMBER}]",
+                body: """
+                    <h2>Build Status: ${currentBuild.currentResult}</h2>
+                    <p><b>Job:</b> ${env.JOB_NAME}</p>
+                    <p><b>Build Number:</b> #${env.BUILD_NUMBER}</p>
+                    <p><b>Test Profile:</b> ${params.TEST_SUITE}</p>
+                    <p><b>Environment:</b> ${params.ENVIRONMENT}</p>
+                    <p><strong>Console URL:</strong> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+                    <p><strong>Report URL:</strong> <a href="${env.BUILD_URL}Cucumber_20BDD_20Test_20Report/">View Cucumber Report</a></p>
+                """,
+                mimeType: 'text/html',
+                to: "${params.RECIPIENTS}",
+                attachmentsPattern: 'reports/cucumber-report.html'
+            )
+
         }
 
         success {

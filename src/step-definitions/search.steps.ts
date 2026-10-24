@@ -1,3 +1,4 @@
+// src/step-definitions/search.steps.ts
 import { When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { CustomWorld } from '../support/custom-world';
@@ -7,8 +8,7 @@ When('the user searches for product {string}', async function (this: CustomWorld
 });
 
 Then('the product {string} should appear in search results', async function (this: CustomWorld, _product: string) {
-  const isPresent = await this.searchPage!.displayStatusOfHPValidProduct();
-  expect(isPresent).toBeTruthy();
+  await expect(this.searchPage!.validHPProduct).toBeVisible({ timeout: 5000 });
 });
 
 When('the user clicks on the search button directly', async function (this: CustomWorld) {
@@ -16,6 +16,7 @@ When('the user clicks on the search button directly', async function (this: Cust
 });
 
 Then('the no product search result message should be displayed', async function (this: CustomWorld) {
-  const message = await this.searchPage!.retrieveNoProductMessageText();
-  expect(message).toBe('There is no product that matches the search criteria.');
+  await expect(this.searchPage!.noProductMessage).toHaveText(
+    'There is no product that matches the search criteria.'
+  );
 });
