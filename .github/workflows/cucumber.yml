@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -46,17 +46,18 @@ jobs:
         if: always()
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: ${{ secrets.SMTP_SERVER }}
-          server_port: ${{ secrets.SMTP_PORT }}
-          username: ${{ secrets.SMTP_USERNAME }}
-          password: ${{ secrets.SMTP_PASSWORD }}
-          subject: "Test Execution Status: ${{ job.status }} - Build #${{ github.run_number }}"
-          to: ${{ secrets.REPORT_RECIPIENTS }}
-          from: "Automation QA <${{ secrets.SMTP_USERNAME }}>"
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "GitHub Actions: Cucumber BDD Test Report - ${{ job.status }} (Run #${{ github.run_number }})"
+          to: ${{ secrets.MAIL_TO }}
+          from: "Playwright Cucumber Suite <${{ secrets.MAIL_USERNAME }}>"
           html_body: |
             <h3>Cucumber BDD Test Run Results</h3>
             <p><strong>Status:</strong> ${{ job.status }}</p>
             <p><strong>Branch:</strong> ${{ github.ref_name }}</p>
             <p><strong>Commit:</strong> ${{ github.sha }}</p>
-            <p>The Cucumber HTML report is attached to this email.</p>
+            <p>The Cucumber HTML report is attached.</p>
           attachments: reports/cucumber-report.html
