@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        // Must match your tool name in: Manage Jenkins > Tools > NodeJS Installations
+        // Ensure this matches your configured NodeJS 22+ installation name under Manage Jenkins > Tools
         nodejs 'NodeJS 24.21.0'
     }
 
@@ -22,6 +22,11 @@ pipeline {
             defaultValue: 'https://tutorialsninja.com/demo/',
             description: 'Target Application URL'
         )
+        string(
+            name: 'RECIPIENT_EMAIL',
+            defaultValue: 'holkarmahesh@outlook.com',
+            description: 'Recipient Email Address for Test Reports'
+        )
     }
 
     options {
@@ -33,7 +38,7 @@ pipeline {
 
     environment {
         CI = 'true'
-        TARGET_URL = "${params.APP_URL}"
+        URL = "${params.APP_URL}"
         HEADLESS = "${params.HEADLESS}"
     }
 
@@ -45,25 +50,14 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Install Dependencies & Browsers') {
             steps {
                 bat '''
                     @echo off
                     echo ========================================
-                    echo Installing NPM Dependencies
+                    echo Installing NPM Packages and Playwright
                     echo ========================================
                     call npm ci
-                '''
-            }
-        }
-
-        stage('Install Playwright Browsers') {
-            steps {
-                bat '''
-                    @echo off
-                    echo ========================================
-                    echo Installing Playwright Chromium
-                    echo ========================================
                     call npx playwright install chromium --with-deps
                 '''
             }
@@ -93,10 +87,7 @@ pipeline {
 
     post {
         always {
-            echo "========================================"
-            echo "Publishing Cucumber HTML Report"
-            echo "========================================"
-
+            echo "Publishing HTML Report..."
             publishHTML(target: [
                 allowMissing: true,
                 alwaysLinkToLastBuild: true,
@@ -111,35 +102,44 @@ pipeline {
                 allowEmptyArchive: true
             )
 
+            echo "Sending Execution Email with Attached HTML Report..."
             emailext (
-                to: 'holkarmahesh@outlook.com',
-                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME} [Build #${env.BUILD_NUMBER}]",
-                body: """
-                    <h2>Build Status: ${currentBuild.currentResult}</h2>
-                    <p><b>Job:</b> ${env.JOB_NAME}</p>
-                    <p><b>Build Number:</b> #${env.BUILD_NUMBER}</p>
-                    <p><b>Test Profile:</b> ${params.TEST_SUITE}</p>
-                    <p><b>Environment:</b> ${params.ENVIRONMENT}</p>
-                    <p><strong>Console URL:</strong> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
-                    <p><strong>Report URL:</strong> <a href="${env.BUILD_URL}Cucumber_20BDD_20Test_20Report/">View Cucumber Report</a></p>
-                """,
+                to: "${params.RECIPIENT_EMAIL}",
+                subject: "Jenkins Test Execution: ${currentBuild.currentResult} - Job: ${env.JOB_NAME} [#${env.BUILD_NUMBER}]",
                 mimeType: 'text/html',
-                to: "${params.RECIPIENTS}",
+                body: """
+                    <!DOCTYPE html>
+                    <html>
+                    <body>
+                        <h2 style="color: #2c3e50;">Playwright Cucumber BDD Execution Summary</h2>
+                        <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
+                            <tr style="background-color: #f2f2f2;">
+                                <td style="padding: 8px; border: 1px solid #ddd;"><strong>Job Name</strong></td>
+                                <td style="padding: 8px; border: 1px solid #ddd;">${env.JOB_NAME}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd;"><strong>Build Number</strong></td>
+                                <td style="padding: 8px; border: 1px solid #ddd;">#${env.BUILD_NUMBER}</td>
+                            </tr>
+                            <tr style="background-color: #f2f2f2;">
+                                <td style="padding: 8px; border: 1px solid #ddd;"><strong>Build Status</strong></td>
+                                <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">${currentBuild.currentResult}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd;"><strong>Executed Tag</strong></td>
+                                <td style="padding: 8px; border: 1px solid #ddd;">${params.TAG}</td>
+                            </tr>
+                            <tr style="background-color: #f2f2f2;">
+                                <td style="padding: 8px; border: 1px solid #ddd;"><strong>Console Output</strong></td>
+                                <td style="padding: 8px; border: 1px solid #ddd;"><a href="${env.BUILD_URL}">View Console Logs</a></td>
+                            </tr>
+                        </table>
+                        <p><em>The detailed <code>cucumber-report.html</code> has been attached directly to this email.</em></p>
+                    </body>
+                    </html>
+                """,
                 attachmentsPattern: 'reports/cucumber-report.html'
             )
-
-        }
-
-        success {
-            echo 'All Playwright Cucumber scenarios passed successfully.'
-        }
-
-        unstable {
-            echo 'Test failures detected. Review the Cucumber BDD Test Report.'
-        }
-
-        failure {
-            echo 'Pipeline execution failed.'
         }
     }
 }
