@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     tools {
-        // Ensure this matches your configured NodeJS 22+ installation name under Manage Jenkins > Tools
         nodejs 'NodeJS 24.21.0'
     }
 
@@ -38,8 +37,8 @@ pipeline {
 
     environment {
         CI = 'true'
-        URL = "${params.APP_URL}"
-        HEADLESS = "${params.HEADLESS}"
+        TARGET_URL = "${params.APP_URL}"
+        IS_HEADLESS = "${params.HEADLESS}"
     }
 
     stages {
