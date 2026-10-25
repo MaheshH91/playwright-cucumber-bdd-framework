@@ -1,5 +1,14 @@
 # Playwright TypeScript Cucumber BDD Test Automation Framework
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-24.21.0-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js 24.21.0" />
+  <img src="https://img.shields.io/badge/Playwright-1.64.1-45ba4b?style=for-the-badge&logo=playwright&logoColor=white" alt="Playwright 1.64.1" />
+  <img src="https://img.shields.io/badge/Cucumber.js-13.3.0-23D96B?style=for-the-badge&logo=cucumber&logoColor=white" alt="Cucumber.js 13.3.0" />
+  <img src="https://img.shields.io/badge/TypeScript-5.7.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript 5.7.3" />
+  <img src="https://img.shields.io/badge/GitHub_Actions-CI-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions CI" />
+  <img src="https://img.shields.io/badge/Jenkins-Pipeline-D24939?style=for-the-badge&logo=jenkins&logoColor=white" alt="Jenkins Pipeline" />
+</p>
+
 An enterprise-grade end-to-end Behavior-Driven Development (BDD) automation framework built with Playwright, Cucumber.js, and TypeScript for reliable validation of modern web applications.
 
 This project tests the e-commerce workflows of the [TutorialsNinja Demo Application](https://tutorialsninja.com/demo/) using a scalable Page Object Model (POM), Gherkin feature files, and a reusable custom World context for scenario execution.
