@@ -1,117 +1,80 @@
 # Playwright TypeScript Cucumber BDD Test Automation Framework
 
+An enterprise-grade end-to-end Behavior-Driven Development (BDD) automation framework built with Playwright, Cucumber.js, and TypeScript for reliable validation of modern web applications.
 
-An enterprise-grade, end-to-end Behavior-Driven Development (BDD) test automation framework built with **Playwright**, **Cucumber (cucumber-js 13)**, and **TypeScript**, engineered for cross-browser testing, parallel execution, and continuous integration via **GitHub Actions** and **Jenkins CI/CD** with automated HTML email reports.
-
-The framework validates the e-commerce workflows of the [TutorialsNinja
-Demo Application](https://tutorialsninja.com/demo/), featuring Page
-Object Model (POM) architecture, isolated browser context lifecycles,
-embedded Gherkin data-driven execution, and zero reliance on heavy
-external reporting binaries or spreadsheet parsers.
+This project tests the e-commerce workflows of the [TutorialsNinja Demo Application](https://tutorialsninja.com/demo/) using a scalable Page Object Model (POM), Gherkin feature files, and a reusable custom World context for scenario execution.
 
 ------------------------------------------------------------------------
 
 ## Key Features
 
--   **Playwright + TypeScript**: Native async/await interaction
-    execution with strict type-safety.
--   **BDD with Cucumber**: Gherkin feature definitions (`Given`, `When`,
-    `Then`) with decoupled step definitions.
--   **Page Object Model (POM)**: Componentized page classes
-    encapsulating web element locators and action methods.
--   **Custom World Context**: Type-safe shared state management
-    (`CustomWorld`) across step definitions per scenario.
--   **Zero-Dependency Test Data**: Direct integration of test matrices
-    using Gherkin `Scenario Outline` `Examples:` tables and strongly
-    typed TypeScript fixtures (`src/data/`).
--   **Resilient Failure Hooks**: Automatic screenshot capture attached
-    directly to the Cucumber scenario buffer on assertion or locator
-    failures without masking root errors.
--   **Jenkins CI/CD Ready**: Declarative `Jenkinsfile` supporting
-    parameterization (`TAG`, `HEADLESS`, `APP_URL`), auto-publishing of
-    styled HTML reports, and Content Security Policy (CSP)
-    compatibility.
+- Playwright + TypeScript: Native async/await browser automation with strong type safety.
+- Cucumber BDD: Gherkin feature files with `Given`, `When`, and `Then` step definitions.
+- Page Object Model: Encapsulated page interactions and reusable UI methods.
+- Custom World Context: Shared per-scenario state with `CustomWorld` and Playwright instances.
+- Data-Driven Testing: Scenario Outline examples and typed fixtures under `src/data/`.
+- Resilient Failure Handling: Automatic screenshots attached to failed scenarios without masking root errors.
+- CI/CD Ready: Supports both GitHub Actions and Jenkins with HTML artifact publishing and email reporting.
 
 ------------------------------------------------------------------------
 
-## Tech Stack & Dependencies
+## Tech Stack
 
-  -----------------------------------------------------------------------
-  Tool / Library          Version                 Purpose
-  ----------------------- ----------------------- -----------------------
-  **Node.js**             `>= 22.x` (LTS 22 / 24) Runtime Environment
-
-  **Playwright Test**     `^1.64.1`               Core Browser Automation
-                                                  & Locator Engine
-
-  **Cucumber.js**         `^13.3.0`               BDD Test Runner &
-                                                  Gherkin Parser
-
-  **TypeScript**          `^5.7.3`                Programming Language
-
-  **ts-node**             `^10.9.2`               Just-In-Time TypeScript
-                                                  Execution for Node
-
-  **dotenv**              `^18.0.8`               Environment
-                                                  Configuration
-                                                  Management
-  -----------------------------------------------------------------------
+| Tool / Library | Version | Purpose |
+| --- | --- | --- |
+| Node.js | >= 22.x (project CI pinned to 24.21.0) | Runtime environment |
+| Playwright | ^1.64.1 | Browser automation and test execution |
+| Cucumber.js | ^13.3.0 | BDD runner and parser |
+| TypeScript | ^5.7.3 | Type-safe test development |
+| ts-node | ^10.9.2 | Runtime execution for TypeScript |
+| dotenv | ^18.0.8 | Environment variable management |
 
 ------------------------------------------------------------------------
 
 ## Project Structure
 
-``` text
+```text
 playwright-cucumber-bdd-framework/
-│
 ├── .github/
 │   └── workflows/
 │       └── cucumber.yml               # GitHub Actions CI pipeline
-│
-├── features/                          # Gherkin BDD Feature Files
-│   ├── login.feature                  # Authentication & invalid credential matrices
-│   ├── register.feature               # New user registration & mandatory validations
-│   └── search.feature                 # Product catalog search validation
-│
-├── reports/                           # Test execution output directory
-│   ├── cucumber-report.html           # Native styled HTML report
-│   └── cucumber-report.json           # JSON report for CI/CD artifact storage
-│   ├── traces/                        # Playwright trace archives (.zip) for failed runs
-│   └── videos/                        # Recorded video executions for failed scenarios
-│
+├── features/                          # Gherkin BDD feature files
+│   ├── login.feature
+│   ├── register.feature
+│   └── search.feature
+├── reports/                           # Run artifacts and traces
+│   ├── cucumber-report.html
+│   ├── cucumber-report.json
+│   ├── traces/
+│   └── videos/
 ├── src/
 │   ├── config/
-│   │   └── env.config.ts              # Centralized environment variable loader
-│   │
+│   │   └── env.config.ts              # ENV configuration loader
 │   ├── data/
-│   │   └── testData.ts                # Strongly typed fallback fixtures & credentials
-│   │
-│   ├── pages/                         # Page Object Model (POM) Classes
-│   │   ├── AccountPage.ts             # Member dashboard & account navigation
-│   │   ├── AccountSuccessPage.ts      # Registration confirmation page
-│   │   ├── HomePage.ts                # Header, navigation, and landing interactions
-│   │   ├── LoginPage.ts               # Login form fields and authentication actions
-│   │   ├── RegisterPage.ts            # Registration form fields and validations
-│   │   └── SearchPage.ts              # Search results and zero-match containers
-│   │
-│   ├── step-definitions/              # Cucumber Step Definitions
+│   │   └── testData.ts                # Typed test data and credentials
+│   ├── pages/
+│   │   ├── AccountPage.ts
+│   │   ├── AccountSuccessPage.ts
+│   │   ├── HomePage.ts
+│   │   ├── LoginPage.ts
+│   │   ├── RegisterPage.ts
+│   │   └── SearchPage.ts
+│   ├── step-definitions/
 │   │   ├── login.steps.ts
 │   │   ├── register.steps.ts
 │   │   └── search.steps.ts
-│   │
-│   ├── support/                       # Framework Infrastructure
-│   │   ├── custom-world.ts            # Cucumber World interface with Playwright instances
-│   │   └── hooks.ts                   # Before/After scenario lifecycle, context & screenshots
-│   │
+│   ├── support/
+│   │   ├── custom-world.ts
+│   │   └── hooks.ts
 │   └── utils/
-│       └── DataUtils.ts               # Dynamic test data generators (unique email/phone)
-│
-├── .env                               # Local environment overrides (gitignored)
-├── .gitignore                         # Build and dependency exclusions
-├── cucumber.json                      # Cucumber runner, formats, paths & modules config
-├── Jenkinsfile                        # Declarative Jenkins CI/CD pipeline definition
-├── package.json                       # Project scripts, engines, and dependencies
-└── tsconfig.json                      # TypeScript compilation and module resolution settings
+│       └── DataUtils.ts
+├── .env                               # Local environment overrides
+├── .gitignore
+├── cucumber.json                      # Cucumber runner configuration
+├── Jenkinsfile                        # Jenkins pipeline definition
+├── package.json                       # Scripts and dependency versions
+├── tsconfig.json                      # TypeScript compiler configuration
+└── README.md
 ```
 
 ------------------------------------------------------------------------
@@ -120,40 +83,39 @@ playwright-cucumber-bdd-framework/
 
 ### Prerequisites
 
--   **Node.js**: `v22.x` or `v24.x` installed (`node -v`) (Cucumber 13 requires Node.js 22 || 24 || >=26)
--   **Git**: Installed and configured (`git --version`)
+- Node.js 22.x or 24.x installed (`node -v`)
+- Git installed and configured (`git --version`)
 
 ### Installation
 
-1.  **Clone the repository:**
+1. Clone the repository:
 
-``` bash
+```bash
 git clone https://github.com/MaheshH91/playwright-cucumber-bdd-framework.git
 cd playwright-cucumber-bdd-framework
 ```
 
-2.  **Install project dependencies:**
+2. Install dependencies:
 
-``` bash
+```bash
 npm ci
 ```
 
-3.  **Install Playwright browser binaries:**
+3. Install Playwright browser binaries:
 
-``` bash
+```bash
 npx playwright install chromium --with-deps
 ```
 
-4.  **Set up environment variables:** Create a `.env` file in the
-    project root:
+4. Configure environment variables by creating a `.env` file in the project root:
 
-``` properties
+```properties
 URL=https://tutorialsninja.com/demo/
 HEADLESS=true
 EXPLICIT_WAIT=10
 PAGE_LOAD_TIMEOUT=15
-VALID_EMAIL=mahesh.jadhav@aressindia.net
-VALID_PASSWORD=123456789
+VALID_EMAIL=your_email@example.com
+VALID_PASSWORD=your_password
 FIRST_NAME=Mahesh
 LAST_NAME=Holkar
 TELEPHONE=9878943234
@@ -163,92 +125,73 @@ TELEPHONE=9878943234
 
 ## Test Execution
 
-### 1. Dry Run (Verify Step Matching)
+### 1. Dry Run
 
-Validates that every Gherkin step across all `.feature` files is
-correctly mapped to a TypeScript step definition without launching
-browsers:
+Validate all step mappings without launching the browser:
 
-``` bash
+```bash
 npx cucumber-js --dry-run
 ```
 
-### 2. Run the Full Test Suite
+### 2. Run Full Suite
 
-Executes all scenarios across Login, Register, and Search in headless
-mode:
-
-``` bash
+```bash
 npm test
 ```
 
-### 3. Run by Tags
+### 3. Execute by Tags
 
-Target specific test groups using Cucumber tags:
-
--   **Smoke Suite:**
-
-``` bash
+```bash
 npm run test:smoke
-```
-
--   **Regression Suite:**
-
-``` bash
 npm run test:regression
 ```
 
--   **Custom Tag (e.g., Login only):**
+Custom tag execution:
 
-``` bash
+```bash
 npx cucumber-js --tags "@login"
 ```
 
 ### 4. Run in Headed Mode
 
-Launches Chromium with a visible UI:
+Windows PowerShell:
 
--   **Windows PowerShell:**
-
-``` powershell
+```powershell
 $env:HEADLESS="false"; npm test
 ```
 
--   **Command Prompt (cmd):**
+Command Prompt:
 
-``` cmd
+```cmd
 npm run test:headed
 ```
 
-### 5. Inspect Failure Traces
-When a scenario fails, a Playwright trace archive is generated under `reports/traces/<scenario_name>.zip`. Inspect it using Playwright's Trace Viewer:
+### 5. Inspect Trace Files
 
-``` cmd
+When a scenario fails, Playwright creates a trace archive under `reports/traces/`:
+
+```bash
 npx playwright show-trace reports/traces/<trace-name>.zip
 ```
-Bash
+
 ------------------------------------------------------------------------
 
 ## Test Reporting
 
-Test reports are automatically saved to the `reports/` directory upon
-execution:
+The framework generates HTML and JSON reports automatically under the `reports/` folder:
 
--   **Cucumber HTML Report**: `reports/cucumber-report.html`
-    (interactive overview of scenarios, execution times, attached
-    failure screenshots, and step statuses).
--   **Cucumber JSON Output**: `reports/cucumber-report.json`
-    (machine-readable data used by CI runners and artifact archivers).
+- Cucumber HTML Report: `reports/cucumber-report.html`
+- Cucumber JSON Report: `reports/cucumber-report.json`
 
-To open the HTML report after execution:
+Open the HTML report from the terminal:
 
-``` bash
+```bash
 npm run report
 ```
 
-*Or open directly in PowerShell:*
+On Windows PowerShell:
 
-``` powershell
+```powershell
 Start-Process reports/cucumber-report.html
 ```
 
@@ -256,83 +199,74 @@ Start-Process reports/cucumber-report.html
 
 ## CI/CD Pipeline Integrations
 
-The framework includes a declarative `Jenkinsfile` configured for
-Windows and containerized agents.
+### GitHub Actions
 
-### 1. GitHub Actions Pipeline (`.github/workflows/cucumber.yml`)
-The repository includes a GitHub Actions workflow configured to run on `push` and `pull_request` against `main` and `master`:
+The repository includes a CI workflow in `.github/workflows/cucumber.yml` that runs on:
 
-Runs tests on Ubuntu using Node.js 22.
+- `push` to `main` and `master`
+- `pull_request` to `main` and `master`
 
-Uploads the HTML report artifact with a 14-day retention period.
+Pipeline behavior:
 
-Automatically dispatches an HTML email report with `cucumber-report.html` attached via `dawidd6/action-send-mail@v3`.
+- Uses Node.js `24.21.0`
+- Installs dependencies with `npm ci`
+- Installs Playwright Chromium binaries
+- Runs the test suite with `npm run test`
+- Uploads the generated HTML report as an artifact for 14 days
+- Sends an email report using the configured mail secrets
 
-Required GitHub Secrets:
-Navigate to Settings > Secrets and variables > Actions and configure:
+Required GitHub secrets:
 
-`MAIL_USERNAME`: Sender email address.
+- `MAIL_USERNAME`
+- `MAIL_PASSWORD`
+- `MAIL_TO`
 
-`MAIL_PASSWORD`: App-specific password (e.g., Google App Password).
+### Jenkins
 
-`MAIL_TO`: Recipient email address(es).
+The repository includes a declarative `Jenkinsfile` with pipeline parameters:
 
-### 2. Jenkins Pipeline (`Jenkinsfile`)
-A declarative pipeline for Windows/Linux Jenkins agents supporting parameters and HTML email delivery.
-## Jenkins Pipeline Parameters
+- `TAG` (`all`, `@smoke`, `@regression`, `@login`)
+- `HEADLESS` (`true` / `false`)
+- `APP_URL`
+- `RECIPIENT_EMAIL`
 
--   **`TAG`**: Filter executions (`all`, `@smoke`, `@regression`,
-    `@login`).
--   **`HEADLESS`**: Toggle headless or headed execution.
--   **`APP_URL`**: Target environment URL override.
--   **`RECIPIENT_EMAIL`: Recipient address for build reports.
+Pipeline stages:
 
-### Jenkins Pipeline Stages
+1. Checkout source
+2. Install dependencies and browser binaries
+3. Execute selected Cucumber tests
+4. Publish HTML report
+5. Archive test artifacts
+6. Send an email with the report attached
 
-1.  **Checkout Source**: Wipes workspace and checks out the target
-    branch.
-2.  **Install Dependencies**: Executes clean dependency installation via
-    `npm ci`.
-3.  **Install Playwright Browsers**: Ensures Chromium binaries are
-    cached and up-to-date.
-4.  **Execute Cucumber BDD Tests**: Runs the targeted test suites,
-    capturing non-zero exit codes to mark the build as `UNSTABLE`
-    without aborting post-actions.
-5.  **Post-Build Actions**:
-    HTML Publisher: Publishes cucumber-report.html with historical trends.
-    Artifact Archiving: Archives all files under `reports/**`.
-    Publishes the HTML report via the Jenkins
-    Extended Email Notification (`emailext`): Sends an HTML summary table along with `reports/cucumber-report.html` attached directly to the email.
-    HTML Publisher plugin and archives failure screenshots and JSON
-    artifacts.
+If the HTML report styling appears broken in Jenkins due to CSP restrictions, use:
 
-### Resolving Jenkins HTML Report Formatting (CSP)
-
-If the HTML report renders without styles in Jenkins, relax the Content Security Policy:
-
-1.  Navigate to **Manage Jenkins** \> **Script Console**.
-
-2.  Execute the following Groovy statement:
-
-``` groovy
+```groovy
 System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 ```
 
+Run this in Jenkins Script Console under Manage Jenkins.
+
 ------------------------------------------------------------------------
 
-## Coding Standards & Best Practices
+## Coding Standards and Best Practices
 
-1.  **Native Playwright Auto-Waiting**: Relies on Playwright's built-in wait mechanisms for visibility and
-    actionability prior to `.fill()`,   `.click()`, or `.check()`, avoiding arbitrary hardcoded sleeps.
-2.  **Dynamic Product Selectors**: Product catalog lookups utilize dynamic locators (getProductByName(productName)) to
-    support data-driven search assertions without hardcoding product IDs.
-3.  **Dynamic Data Generation**: Registration scenarios utilize `DataUtils.generateUniqueEmail()` to prevent duplicate account
-    creation failures on repeated executions.
-4.   **Decoupled Step Actions**: Form input populations and action triggers (e.g., agreeing to policies, clicking continue) remain modular in step definitions to ensure individual step traceability.
-5.  **Smart Resource Management**: Video recordings are automatically deleted for passing scenarios and only retained alongside traces for failing scenarios to optimize disk and artifact usage.
+1. Prefer Playwright's built-in auto-waiting instead of arbitrary sleep calls.
+2. Use dynamic locators for resilient product and form interactions.
+3. Generate unique test data to avoid duplicate-account collisions during repeated runs.
+4. Keep step definitions modular and scenario-focused for easier debugging and maintenance.
+5. Retain traces and videos only for failing scenarios to keep the reports clean and actionable.
 
-## Author & Connect
+------------------------------------------------------------------------
 
-- **Author**: Mahesh Holkar
-- **LinkedIn**: [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/maheshholkarqaengineer/)
-- **GitHub**: [![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=flat&logo=github)](https://github.com/MaheshH91)
+## Author and Connect
+
+- Author: Mahesh Holkar
+- LinkedIn: [Connect on LinkedIn](https://www.linkedin.com/in/maheshholkarqaengineer/)
+- GitHub: [View GitHub Profile](https://github.com/MaheshH91)
+
+------------------------------------------------------------------------
+
+## License
+
+This project is available for learning and experimentation. Update the license file if you intend to distribute or reuse it commercially.
