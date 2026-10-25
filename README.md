@@ -1,9 +1,7 @@
 # Playwright TypeScript Cucumber BDD Test Automation Framework
 
-An enterprise-grade, end-to-end Behavior-Driven Development (BDD) test
-automation framework built with **Playwright**, **Cucumber
-(cucumber-js)**, and **TypeScript**, designed for cross-browser testing
-and continuous integration via **Jenkins CI/CD**.
+
+An enterprise-grade, end-to-end Behavior-Driven Development (BDD) test automation framework built with **Playwright**, **Cucumber (cucumber-js 13)**, and **TypeScript**, engineered for cross-browser testing, parallel execution, and continuous integration via **GitHub Actions** and **Jenkins CI/CD** with automated HTML email reports.
 
 The framework validates the e-commerce workflows of the [TutorialsNinja
 Demo Application](https://tutorialsninja.com/demo/), featuring Page
@@ -41,7 +39,7 @@ external reporting binaries or spreadsheet parsers.
   -----------------------------------------------------------------------
   Tool / Library          Version                 Purpose
   ----------------------- ----------------------- -----------------------
-  **Node.js**             `>= 20.x`               Runtime Environment
+  **Node.js**             `>= 22.x` (LTS 22 / 24) Runtime Environment
 
   **Playwright Test**     `^1.64.1`               Core Browser Automation
                                                   & Locator Engine
@@ -78,13 +76,14 @@ playwright-cucumber-bdd-framework/
 ├── reports/                           # Test execution output directory
 │   ├── cucumber-report.html           # Native styled HTML report
 │   └── cucumber-report.json           # JSON report for CI/CD artifact storage
+│   ├── traces/                        # Playwright trace archives (.zip) for failed runs
+│   └── videos/                        # Recorded video executions for failed scenarios
 │
 ├── src/
 │   ├── config/
 │   │   └── env.config.ts              # Centralized environment variable loader
 │   │
 │   ├── data/
-│   │   ├── categories.ts              # Defect & assertion failure taxonomy
 │   │   └── testData.ts                # Strongly typed fallback fixtures & credentials
 │   │
 │   ├── pages/                         # Page Object Model (POM) Classes
@@ -121,7 +120,7 @@ playwright-cucumber-bdd-framework/
 
 ### Prerequisites
 
--   **Node.js**: `v20.x` or later installed (`node -v`)
+-   **Node.js**: `v22.x` or `v24.x` installed (`node -v`) (Cucumber 13 requires Node.js 22 || 24 || >=26)
 -   **Git**: Installed and configured (`git --version`)
 
 ### Installation
@@ -221,6 +220,13 @@ $env:HEADLESS="false"; npm test
 npm run test:headed
 ```
 
+### 5. Inspect Failure Traces
+When a scenario fails, a Playwright trace archive is generated under `reports/traces/<scenario_name>.zip`. Inspect it using Playwright's Trace Viewer:
+
+``` cmd
+npx playwright show-trace reports/traces/<trace-name>.zip
+```
+Bash
 ------------------------------------------------------------------------
 
 ## Test Reporting
@@ -248,17 +254,38 @@ Start-Process reports/cucumber-report.html
 
 ------------------------------------------------------------------------
 
-## CI/CD Pipeline (Jenkins Integration)
+## CI/CD Pipeline Integrations
 
 The framework includes a declarative `Jenkinsfile` configured for
 Windows and containerized agents.
 
-### Jenkins Pipeline Parameters
+### 1. GitHub Actions Pipeline (`.github/workflows/cucumber.yml`)
+The repository includes a GitHub Actions workflow configured to run on `push` and `pull_request` against `main` and `master`:
+
+Runs tests on Ubuntu using Node.js 22.
+
+Uploads the HTML report artifact with a 14-day retention period.
+
+Automatically dispatches an HTML email report with `cucumber-report.html` attached via `dawidd6/action-send-mail@v3`.
+
+Required GitHub Secrets:
+Navigate to Settings > Secrets and variables > Actions and configure:
+
+`MAIL_USERNAME`: Sender email address.
+
+`MAIL_PASSWORD`: App-specific password (e.g., Google App Password).
+
+`MAIL_TO`: Recipient email address(es).
+
+### 2. Jenkins Pipeline (`Jenkinsfile`)
+A declarative pipeline for Windows/Linux Jenkins agents supporting parameters and HTML email delivery.
+## Jenkins Pipeline Parameters
 
 -   **`TAG`**: Filter executions (`all`, `@smoke`, `@regression`,
     `@login`).
 -   **`HEADLESS`**: Toggle headless or headed execution.
 -   **`APP_URL`**: Target environment URL override.
+-   **`RECIPIENT_EMAIL`: Recipient address for build reports.
 
 ### Jenkins Pipeline Stages
 
@@ -271,14 +298,17 @@ Windows and containerized agents.
 4.  **Execute Cucumber BDD Tests**: Runs the targeted test suites,
     capturing non-zero exit codes to mark the build as `UNSTABLE`
     without aborting post-actions.
-5.  **Post-Build Actions**: Publishes the HTML report via the Jenkins
+5.  **Post-Build Actions**:
+    HTML Publisher: Publishes cucumber-report.html with historical trends.
+    Artifact Archiving: Archives all files under `reports/**`.
+    Publishes the HTML report via the Jenkins
+    Extended Email Notification (`emailext`): Sends an HTML summary table along with `reports/cucumber-report.html` attached directly to the email.
     HTML Publisher plugin and archives failure screenshots and JSON
     artifacts.
 
 ### Resolving Jenkins HTML Report Formatting (CSP)
 
-If reports render in Jenkins without CSS styling or collapsible
-elements, relax the Content Security Policy:
+If the HTML report renders without styles in Jenkins, relax the Content Security Policy:
 
 1.  Navigate to **Manage Jenkins** \> **Script Console**.
 
@@ -292,15 +322,15 @@ System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 
 ## Coding Standards & Best Practices
 
-1.  **Explicit Separation of Actions**: Step definitions avoid bundling
-    input population with submit clicks to prevent redundant locator
-    timeouts across page transitions.
-2.  **Dynamic Data Generation**: Registration scenarios utilize
-    `DataUtils.generateUniqueEmail()` to prevent duplicate account
+1.  **Native Playwright Auto-Waiting**: Relies on Playwright's built-in wait mechanisms for visibility and
+    actionability prior to `.fill()`,   `.click()`, or `.check()`, avoiding arbitrary hardcoded sleeps.
+2.  **Dynamic Product Selectors**: Product catalog lookups utilize dynamic locators (getProductByName(productName)) to
+    support data-driven search assertions without hardcoding product IDs.
+3.  **Dynamic Data Generation**: Registration scenarios utilize `DataUtils.generateUniqueEmail()` to prevent duplicate account
     creation failures on repeated executions.
-3.  **Relative URL Routing**: `HomePage` navigation utilizes clean
-    relative routing resolved against the Playwright `baseURL`
-    configured in `hooks.ts`.
+4.   **Decoupled Step Actions**: Form input populations and action triggers (e.g., agreeing to policies, clicking continue) remain modular in step definitions to ensure individual step traceability.
+5.  **Smart Resource Management**: Video recordings are automatically deleted for passing scenarios and only retained alongside traces for failing scenarios to optimize disk and artifact usage.
+
 ## Author & Connect
 
 - **Author**: Mahesh Holkar
