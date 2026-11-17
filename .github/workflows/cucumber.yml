@@ -8,8 +8,8 @@ on:
 
 jobs:
   test:
-    timeout-minutes: 30
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
       - name: Checkout repository
@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24.21.0
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
@@ -28,11 +28,10 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Run Cucumber BDD Tests
-        id: run_tests
         run: npm run test
         env:
-          HEADLESS: 'true'
-          URL: https://tutorialsninja.com/demo/
+          HEADLESS: "true"
+          URL: "https://tutorialsninja.com/demo/"
 
       - name: Upload Test Reports
         if: always()
