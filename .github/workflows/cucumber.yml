@@ -66,7 +66,7 @@ jobs:
         if: always() && hashFiles('reports/cucumber-report.html') != ''
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: ://gmail.com
+          server_address: : smtp.gmail.com
           server_port: 465
           secure: true
           username: ${{ secrets.MAIL_USERNAME }}
