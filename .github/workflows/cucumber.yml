@@ -2,22 +2,14 @@ name: Playwright Cucumber BDD Tests
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
-    branches: [main]
-  workflow_dispatch:
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
-permissions:
-  contents: read
+    branches: [main, master]
 
 jobs:
   test:
-    runs-on: ubuntu-latest
     timeout-minutes: 30
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -26,52 +18,40 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 24.21.0
           cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Cache Playwright browsers
-        id: playwright-cache
-        uses: actions/cache@v5
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
-
       - name: Install Playwright browsers
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install chromium --with-deps
 
-      - name: Install Playwright OS dependencies (on cache hit)
-        if: steps.playwright-cache.outputs.cache-hit == 'true'
-        run: npx playwright install-deps chromium
-
       - name: Run Cucumber BDD Tests
+        id: run_tests
         run: npm run test
         env:
-          HEADLESS: "true"
-          URL: "https://tutorialsninja.com"
+          HEADLESS: 'true'
+          URL: https://tutorialsninja.com/demo/
 
       - name: Upload Test Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cucumber-report-${{ github.run_number }}
-          path: reports/
-          if-no-files-found: warn
+          name: cucumber-report
+          path: reports/cucumber-report.html
           retention-days: 14
 
       - name: Send Email Report
-        if: always() && hashFiles('reports/cucumber-report.html') != ''
+        if: always()
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: : smtp.gmail.com
+          server_address: smtp.gmail.com
           server_port: 465
           secure: true
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "Cucumber BDD Test Report - ${{ job.status }} (Run #${{ github.run_number }})"
+          subject: "GitHub Actions: Cucumber BDD Test Report - ${{ job.status }} (Run #${{ github.run_number }})"
           to: ${{ secrets.MAIL_TO }}
           from: "Playwright Cucumber Suite <${{ secrets.MAIL_USERNAME }}>"
           html_body: |
@@ -79,6 +59,5 @@ jobs:
             <p><strong>Status:</strong> ${{ job.status }}</p>
             <p><strong>Branch:</strong> ${{ github.ref_name }}</p>
             <p><strong>Commit:</strong> ${{ github.sha }}</p>
-            <p><strong>Run URL:</strong> <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}">View Logs & Artifacts</a></p>
             <p>The Cucumber HTML report is attached.</p>
           attachments: reports/cucumber-report.html
